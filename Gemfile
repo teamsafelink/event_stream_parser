@@ -9,12 +9,12 @@ group :development, :test do
 end
 
 group :development do
-  # Latest version of rubocop that is compatible with Ruby 2.6
-  gem 'rubocop', '1.50.2'
+  # Latest version of rubocop that is compatible with Ruby 2.3.8
+  gem 'rubocop', '0.81.0'
   gem 'rubocop-performance', require: false
 end
 
 group :test do
   gem 'minitest', '~> 5.0'
-  gem 'simplecov', require: false
+  # gem 'simplecov', require: false
 end

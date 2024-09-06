@@ -12,6 +12,32 @@ module EventStreamParser
   # Code comments are copied from the spec.
   #
   class Parser
+    module Refinements
+      refine String do
+        if RUBY_VERSION <= "2.3.8"
+
+          def match?(*args)
+            !!match(*args)
+          end
+
+          def delete_prefix!(pref)
+            self.gsub!(Regexp.new("^#{pref}"), '')
+          end
+        end
+      end
+
+      refine Regexp do
+        if RUBY_VERSION <= "2.3.8"
+
+          def match?(*args)
+            !!match(*args)
+          end
+        end
+      end
+    end
+
+    using Refinements
+
     def initialize
       ##
       # When a stream is parsed, a data buffer, an event type buffer, and a last
